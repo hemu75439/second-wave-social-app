@@ -1,1 +1,1 @@
-# SecondWave-social-app
+# Second Wave (social app)

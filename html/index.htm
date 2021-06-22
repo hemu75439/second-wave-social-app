@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Wave | Home</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+
+    <main class="login-signup-window"> <!-- Write it such that it changes according to the title -->
+        <nav>
+            <ul>
+                <li><a href="#">
+                    <img src="../public/src/Home - Icon.svg" alt="Home">
+                </a></li>
+    
+                <li><a href="#">
+                    <img src="../public/src/Search - Icon.svg" alt="Search">
+                </a></li>
+    
+                <li><a href="#">
+                    <img src="../public/src/Friend Requests - Icon.svg" alt="Requests">
+                </a></li>
+    
+                <li><a href="#">
+                    <img src="../public/src/Friends - Icon.svg" alt="Friends">
+                </a></li>
+    
+                <li><a href="#">
+                    <img src="../public/src/Chat - Icon.svg" alt="Chat">
+                </a></li>
+    
+                <li><a href="#">
+                    <img src="../public/src/Settings - Icon.svg" alt="Settings">
+                </a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+            <header>
+                <h1>Second Wave</h1>
+            </header>
+            <div class="content">
+                <img src="../public/src/second-wave-02.png" alt="Second Wave - Image">
+                <form action="#">
+                    <h2>Sign Up</h2>
+    
+                    <div class="errors"></div>
+    
+                    <input type="text" placeholder="Username" id="username" name="username" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+                    <div>
+                        <button type="submit">Sign Up</button>
+                        <a href="./login.htm" id="log-sign">Log In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+    </main>
+
+
+
+
+
+    <script>
+
+        // Default setting of mode - if its light/dark
+        if(localStorage.getItem("SW-mode") == "dark"){
+            document.querySelector('body').classList.toggle('dark', true)
+
+            if(document.getElementById("mode") != null) {
+                var btn = document.getElementById("mode")
+                btn.src = "../public/src/Moon.svg"
+                btn.alt = "dark"
+                btn.style.transform = "translate(100%)"
+            }
+        }
+        
+        function toggleMode() {
+            var btn = document.getElementById("mode")
+            var body = document.querySelector('body')
+
+            if(btn.alt == 'light') {
+                btn.src = "../public/src/Moon.svg"
+                btn.alt = "dark"
+                btn.style.transform = "translate(100%)"
+                body.classList.toggle('dark', true)
+
+                localStorage.setItem("SW-mode", "dark");
+            } else {
+                btn.src = "../public/src/Sun.svg"
+                btn.alt = "light"
+                btn.style.transform = "translate(0)"
+                body.classList.toggle('dark', false)
+
+                localStorage.setItem("SW-mode", "light");
+            }
+        }
+
+        function like(postId) {
+            var btn = document.getElementById('likeBtn')
+
+            if(btn.alt == "like") {
+                btn.style.display = "none"
+
+                // fetch function for liking the post then
+                btn.src = "../public/src/Red Heart.svg"
+                btn.alt = "dislike"
+                btn.style.display = ""
+            } else {
+                btn.style.display = "none"
+
+                // fetch function for disliking the post then
+                btn.src = "../public/src/Heart.svg"
+                btn.alt = "like"
+                btn.style.display = ""
+            }
+        }
+
+        
+
+        function addFrnd(btn, userID) {
+            btn.style.display = 'none'
+
+            if(btn.innerText == 'Add Friend') {
+
+                // fetch func for sending reqst
+
+                btn.innerText = 'Requset Sent'
+                btn.style.display = ''
+            } else {
+
+                // fetch for revoking reqst
+
+                btn.innerText = 'Add Friend'
+                btn.style.display = ''
+            }
+        }
+
+        function acceptRqst(btn, userID) {
+
+            // fetch func for accepting reqst
+
+            let div = btn.parentNode
+            div.remove()
+        }
+
+        function unfriend(btn, userID) {
+
+            // fetch func for unfriend someone
+
+            let div = btn.parentNode
+            div.remove()
+        }
+    </script>
+</body>
+</html>
+
+
+<!--
+    Navigation
+    <nav>
+        <ul>
+            <li><a href="#">
+                <img src="../public/src/Home - Icon.svg" alt="Home">
+            </a></li>
+
+            <li><a href="#">
+                <img src="../public/src/Search - Icon.svg" alt="Search">
+            </a></li>
+
+            <li><a href="#">
+                <img src="../public/src/Friend Requests - Icon.svg" alt="Requests">
+            </a></li>
+
+            <li><a href="#">
+                <img src="../public/src/Friends - Icon.svg" alt="Friends">
+            </a></li>
+
+            <li><a href="#">
+                <img src="../public/src/Chat - Icon.svg" alt="Chat">
+            </a></li>
+
+            <li><a href="#">
+                <img src="../public/src/Settings - Icon.svg" alt="Settings">
+            </a></li>
+        </ul>
+    </nav>
+
+    Create Post Button
+        <a href="#" class="create-post"><div></div></a>
+
+
+    Post
+        <div class="theme-box post">
+            <h2>Username</h2>
+            <span>10:45</span>
+            <p>Hey Everyone, this is a random post.
+                And I don't know what I'm writing...
+            </p>
+            <span><span>20</span> Likes</span>
+            <img  id="likeBtn" src="../public/src/Heart.svg" alt="like" onclick="like('postId')"> // Post Id to be kept here in parameter 
+        </div>
+
+    Create Post 
+        <form class="theme-box theme-form">
+            <h2>Create Post</h2>
+            <textarea name="post-content" cols="30" rows="10" placeholder="Write Something...."></textarea>
+            <button type="submit">Post</button>
+        </form>
+
+
+    Search Bar
+        <form class="search-bar">
+            <input type="text" id="search" name="search" placeholder="Search..." required>
+            <button type="submit"><img src="../public/src/Search - Icon.svg" alt="Search"></button>
+        </form>
+
+
+    Add friend
+        <div class="theme-box details">
+            <h2>Username</h2>
+            <p>Hey man....I'm Username...
+                Check out my profile....
+            </p>
+            <button onclick="addFrnd(this, 'userID')">Add Friend</button>
+        </div>
+
+
+    Requests
+        <div class="theme-box details">
+            <h2>Username</h2>
+            <p>Hey man....I'm Username...
+                Check out my profile....
+            </p>
+            <button onclick="acceptRqst(this, 'userID')">Accept Request</button>
+        </div>
+
+
+    Friends
+        <div class="theme-box details">
+            <h2>Username</h2>
+            <p>Hey man....I'm Username...
+                Check out my profile....
+            </p>
+            <button onclick="unfriend(this, 'userID')">Unfriend</button>
+        </div>
+
+
+    Settings
+        <div class="theme-box settings">
+            <h2>Username</h2>
+
+            <a href="#">Edit Profile</a>
+            <a href="#">Change Password</a>
+
+            <div onclick="toggleMode()">
+                <span>Mode</span>
+                <span class="switch"><img id="mode" src="../public/src/Sun.svg" alt="light"></span>
+            </div>
+
+            <a href="#">Logout</a>
+
+            <a href="#">Delete Account</a>
+        </div>
+
+
+    Edit Profile
+        <form class="theme-box theme-form">
+            <h2>Edit Profile</h2>
+            <input type="text" name="username" placeholder="Username" required>
+            <textarea name="bio" cols="30" rows="5" placeholder="Bio.."></textarea>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Done</button>
+        </form>
+
+
+    Change Password
+        <form class="theme-box theme-form">
+            <h2>Change Password</h2>
+            <input type="password" name="current-password" placeholder="Current Password" required>
+            <input type="password" name="new-password" placeholder="New Password" required>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Confirm</button>
+        </form>
+
+
+    Prompt
+        <form class="theme-box theme-prompt">
+            <h2>Are you sure ?</h2>
+            <div>
+                <button type="submit">Confirm</button>
+                <a href="#">Cancel</a>
+            </div>
+        </form>
+-->
