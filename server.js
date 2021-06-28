@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 4000 || process.env.PORT
+const port = process.env.PORT || 4000
 require('dotenv').config()
 const ejsLayouts = require('express-ejs-layouts')
 const {session, sessionStore} = require('./config/session')
