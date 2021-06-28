@@ -1,0 +1,25 @@
+<div class="container">
+    <header>
+        <h1>Second Wave</h1>
+    </header>
+    <div class='content'>
+        <img src="/src/second-wave-01.png" alt="Second Wave - Image">
+        <form action="/login" method="POST">
+            <h2>Log In</h2>
+
+            <div class="errors">
+                <% if(errors) { %>
+                    <div><%= errors.msg %></div>
+                <% } %>
+            </div>
+
+            <input type="text" placeholder="Username" id="username" name="username" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <a href="/contact-creator" target="_blank" id="forgot-password">Forgot Password</a>
+            <div>
+                <button type="submit">Log In</button>
+                <a href="/signup" id="log-sign">Sign Up</a>
+            </div>
+        </form>
+    </content>
+</div>

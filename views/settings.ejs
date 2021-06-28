@@ -1,0 +1,18 @@
+
+<%- include('./partials/nav') %>
+
+<div class="theme-box settings">
+    <h2><%= username %></h2>
+
+    <a href="/settings/editprofile">Edit Profile</a>
+    <a href="/settings/changepassword">Change Password</a>
+
+    <div onclick="toggleMode()">
+        <span>Mode</span>
+        <span class="switch"><img id="mode" src="/src/Sun.svg" alt="light"></span>
+    </div>
+
+    <a href="/settings/prompt/logout">Logout</a>
+
+    <a href="/settings/prompt/deleteaccount">Delete Account</a>
+</div>

@@ -25,6 +25,7 @@ body.dark {
 /* -------------------------------------------------------- Navigation */
 nav {
     position: fixed;
+    top: 0;
     left: 0;
     height: 100%;
     width: 80px;
@@ -118,6 +119,7 @@ nav img:hover {
 .details button {
     padding: 5.5px 30px;
     background-color: var(--foreground);
+    color: var(--background);
     border-left: none;
     border-radius: 0;
     cursor: pointer;
@@ -258,6 +260,7 @@ nav img:hover {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .theme-form h2 {
     font-size: 1.3rem;
@@ -440,7 +443,7 @@ header h1 {
 
 
 @media screen and (max-width: 910px) {
-    img {
+    .content img {
         display: none;
     }
 
@@ -577,4 +580,23 @@ header h1 {
     .settings-window {
         padding: 100px 0 0 0;
     }
+}
+
+
+
+
+/* ----------------------------------------------------- Contact Creator */
+.contact-creator h1 {
+    margin-top: 100px;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+.contact-creator a {
+    margin-top: 30px;
+    color: black;
+    display: block;
+    text-align: center;
+    font-size: 1.6rem;
 }

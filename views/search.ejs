@@ -1,0 +1,23 @@
+<%- include('./partials/nav') %>
+<%- include('./partials/searchbar') %>
+
+
+<% if(users) { %>
+
+    <% users.forEach( user => { %>
+
+        <div class="theme-box details">
+            <h2><%= user.username %></h2>
+            <p><%= user.bio %></p>
+            <button onclick="addFrnd(this, '<%= user.UID %>')">Add Friend</button>
+        </div>
+
+    <% }) %>
+
+<% } else if(msg) { %>
+    
+    <div class="theme-box details">
+        <h2><%= msg %></h2>
+    </div>
+    
+<% } %>

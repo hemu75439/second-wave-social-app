@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Wave | <%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    
+
+    <main class="
+        <% if(title == "Login" || title == "Sign Up") { %> login-signup-window <% } %>
+        <% if(title == "Home" || title == "What's up ?") { %> posts-window <% } %>
+        <% if(title == "Search") { %> search-window <% } %>
+        <% if(title == "Friend Requests" || title == "Friend List") { %> req-frnds-window <% } %>
+        <% if(title == "Settings" || title == "Edit Profile" || title == "Change Password" || title == "Logout" || title == "Delete Account") { %> settings-window <% } %>
+    ">
+        
+        <%- body %>
+        
+    </main>
+
+    <script>
+        // Default setting of mode - if its light/dark
+        if(localStorage.getItem("SW-mode") == "dark"){
+            document.querySelector('body').classList.toggle('dark', true)
+
+            if(document.getElementById("mode") != null) {
+                var btn = document.getElementById("mode")
+                btn.src = "/src/Moon.svg"
+                btn.alt = "dark"
+                btn.style.transform = "translate(100%)"
+            }
+        }
+    </script>
+
+</body>
+</html>

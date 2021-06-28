@@ -10,7 +10,7 @@
 <body>
     
 
-    <main class="login-signup-window"> <!-- Write it such that it changes according to the title -->
+    <main class="posts-window"> <!-- Write it such that it changes according to the title -->
         <nav>
             <ul>
                 <li><a href="#">
@@ -39,26 +39,14 @@
             </ul>
         </nav>
         
-        <div class="container">
-            <header>
-                <h1>Second Wave</h1>
-            </header>
-            <div class="content">
-                <img src="../public/src/second-wave-02.png" alt="Second Wave - Image">
-                <form action="#">
-                    <h2>Sign Up</h2>
-    
-                    <div class="errors"></div>
-    
-                    <input type="text" placeholder="Username" id="username" name="username" required>
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
-                    <div>
-                        <button type="submit">Sign Up</button>
-                        <a href="./login.htm" id="log-sign">Log In</a>
-                    </div>
-                </form>
-            </div>
+        <div class="theme-box post">
+            <h2>Username</h2>
+            <span>10:45</span>
+            <p>Hey Everyone, this is a random post.
+                And I don't know what I'm writing...
+            </p>
+            <span><span>20</span> Likes</span>
+            <img  id="likeBtn" src="../public/src/Heart.svg" alt="like" onclick="like('postId')"> // Post Id to be kept here in parameter 
         </div>
 
         
@@ -113,6 +101,7 @@
                 btn.src = "../public/src/Red Heart.svg"
                 btn.alt = "dislike"
                 btn.style.display = ""
+                changeLikes('like', btn)
             } else {
                 btn.style.display = "none"
 
@@ -120,6 +109,7 @@
                 btn.src = "../public/src/Heart.svg"
                 btn.alt = "like"
                 btn.style.display = ""
+                changeLikes('dislike', btn)
             }
         }
 
@@ -157,6 +147,21 @@
 
             let div = btn.parentNode
             div.remove()
+        }
+
+
+        function changeLikes(func, img) {
+
+            let div = img.parentNode
+            let likes = div.querySelectorAll('span')[2]
+
+            if(func == "like") {
+                likes.innerText = parseInt(likes.innerText) + 1
+            }
+
+            if(func == "dislike") {
+                likes.innerText = parseInt(likes.innerText) - 1
+            }
         }
     </script>
 </body>

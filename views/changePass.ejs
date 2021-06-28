@@ -1,0 +1,21 @@
+<%- include('./partials/nav') %>
+
+
+<form action="/settings/changepassword" method="POST" class="theme-box theme-form">
+
+    <% if(error) { %>
+        <div style="
+            position: absolute;
+            left: 40px;
+            top: 80px;
+            font-size: .9rem;
+            color: red;
+        "><%= error %></div>
+    <% } %>
+
+    <h2>Change Password</h2>
+    <input type="password" name="currentPassword" placeholder="Current Password" required>
+    <input type="password" name="newPassword" placeholder="New Password" required>
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+    <button type="submit">Confirm</button>
+</form>

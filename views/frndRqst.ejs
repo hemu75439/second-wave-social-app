@@ -1,0 +1,22 @@
+<%- include('./partials/nav') %>
+
+
+<% if(requests) { %>
+
+    <% requests.forEach( rqst => { %>
+
+        <div class="theme-box details">
+            <h2><%= rqst.username %></h2>
+            <p><%= rqst.bio %></p>
+            <button onclick="acceptRqst(this, '<%= rqst.UID %>')">Accept Request</button>
+        </div>
+
+    <% }) %>
+
+<% } else if(msg) { %>
+    
+    <div class="theme-box details">
+        <h2><%= msg %></h2>
+    </div>
+    
+<% } %>

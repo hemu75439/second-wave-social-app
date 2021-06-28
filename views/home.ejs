@@ -1,0 +1,25 @@
+<%- include('./partials/nav') %>
+<%- include('./partials/createPostBtn') %>
+
+
+<% if(posts) { %>
+
+    <% posts.forEach(post => { %>
+    
+        <div class="theme-box post">
+            <h2><%= post.username %></h2>
+            <span><%= post.created %></span>
+            <p><%= post.content %></p>
+            <span><span><%= post.likes %></span> Likes</span>
+            <img src="/src/Heart.svg" alt="like" onclick="like(this, '<%= post.postID %>')">
+        </div>
+
+    <% }) %>
+
+<% } else if (msg) { %>
+
+    <div class="theme-box post">
+        <h2><%= msg %></h2>
+    </div>
+
+<% } %>

@@ -17,5 +17,17 @@
   "bugs": {
     "url": "https://github.com/hemu75439/SecondWave-social-app/issues"
   },
-  "homepage": "https://github.com/hemu75439/SecondWave-social-app#readme"
+  "homepage": "https://github.com/hemu75439/SecondWave-social-app#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-mysql-session": "^2.1.6",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

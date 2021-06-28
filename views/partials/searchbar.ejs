@@ -1,0 +1,5 @@
+<form action="/search" method="POST" class="search-bar">
+    <input type="text" id="search" name="search" placeholder="Search...  (Ex : @username)" 
+    <% if(search) { %> value="<%= search %>" <% } %> required>
+    <button type="submit"><img src="/src/Search - Icon.svg" alt="Search"></button>
+</form>

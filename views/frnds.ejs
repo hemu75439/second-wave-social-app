@@ -1,0 +1,26 @@
+<%- include('./partials/nav') %>
+
+
+<% if(friends) { %>
+
+    <% friends.forEach( frnd => { %>
+
+        <div class="theme-box details">
+            <h2><%= frnd.username %></h2>
+            <p><%= frnd.bio %></p>
+            <button onclick="unfriend(this, '<%= frnd.UID %>')">Unfriend</button>
+        </div>
+
+    <% }) %>
+
+<% } else if(msg) { %>
+    
+    <div class="theme-box details">
+        <h2><%= msg %></h2>
+    </div>
+    
+<% } %>
+
+    
+
+
