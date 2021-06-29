@@ -1,4 +1,4 @@
-const { Session } = require('express-session');
+
 const pool = require('../config/dbConnect')
 
 
@@ -20,11 +20,13 @@ const deleteAccount = (req, res, next)=> {
 
             connection.query(`delete from posts where UID = ${user}`, (error, result)=> {})
 
-            connection.query(`delete from users where UID = ${user}`, (error, result)=> {
+            connection.query(`delete from users where UID = ${user}`, (error, result)=> {})
 
-                Session.remove({'session':{'$regex': '.*"Uid":"'+ req.session.Uid +'".*'}})
-                res.redirect('/')
-
+            connection.query(`delete from sessions where data regexp '.*"Uid":"${req.session.Uid}".*';`, (error, result)=> {
+                res.render('login', {
+                    title: "Login",
+                    errors: "Account Deleted !"
+                })
             })
         
         
