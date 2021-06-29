@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(session({ 
     secret: 'mySecretK1y', 
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: sessionStore,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24
