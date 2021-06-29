@@ -67,7 +67,7 @@ app.get('/logout', auth, (req, res)=> {
 
 
 const deleteAccount = require('./model/deleteAccount')
-app.get('/deleteaccount', deleteAccount)
+app.get('/deleteaccount', auth, deleteAccount)
 
 app.listen(port, ()=> {
     console.log('listening on port : ' + port)
