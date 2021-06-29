@@ -17,6 +17,8 @@ const deleteAccount = (req, res, next)=> {
 
             connection.query(`delete from friendrequests where senderID = ${user} or rqstID = ${user}`, (error, result)=> {})
 
+            connection.query(`delete from posts where UID = ${user}`, (error, result)=> {})
+
             connection.query(`delete from users where UID = ${user}`, (error, result)=> {
 
                 res.redirect('/logout')

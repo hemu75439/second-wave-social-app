@@ -397,6 +397,7 @@ header h1 {
 }
 
 #forgot-password {
+    margin-top: 5px;
     display: block;
     text-decoration: none;
     color: black;
