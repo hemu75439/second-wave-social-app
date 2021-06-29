@@ -1,11 +1,11 @@
 const signupValid = (req, res, next)=> {
     
-    if(/^@[a-z_]+$/i.test(req.body.username)) {
+    if(/^@[a-z_A-Z0-9]+$/i.test(req.body.username)) {
 
         let password = req.body.password
         if(password.length >= 6) {
 
-            if(/^[a-zA-Z@]+$/i.test(req.body.password)) {
+            if(/^[a-zA-Z0-9@]+$/i.test(req.body.password)) {
 
                 if(req.body.password == req.body.confirmPassword) {
 
@@ -24,7 +24,7 @@ const signupValid = (req, res, next)=> {
                 res.render('signup', {
                     title: "Sign Up",
                     errors: {
-                        msg: "Password must only contain a-z, A-Z, @"
+                        msg: "Password must contain a-z, A-Z, 0-9, @"
                     }
                 })
             }
