@@ -29,25 +29,34 @@ const searchUser = (req, res, next)=> {
                         });
                     }
                     
+                    connection.query('select rqstID from friendrequests where senderID = (?)', UID[0].UID, (error, result)=> {
 
-                    let sql = `select username, bio, UID from users where UID not in(?) and username = "${user}"`
-                    connection.query(sql, [list], (error, result)=> {
-                
-                        if(result.length != 0) {
-                            res.render('search', {
-                                title: "Search",
-                                users: result,
-                                search: user,
-                                msg: false
-                            })
-                        } else {
-                            res.render('search', {
-                                title: "Search",
-                                users: false,
-                                search: user,
-                                msg: "No results found !"
-                            })
+                        if(result.length !=0){
+                            result.forEach(id => {
+                                list.push(id.rqstID)
+                            });
                         }
+
+                        let sql = `select username, bio, UID from users where UID not in(?) and username = "${user}"`
+                        connection.query(sql, [list], (error, result)=> {
+                    
+                            if(result.length != 0) {
+                                res.render('search', {
+                                    title: "Search",
+                                    users: result,
+                                    search: user,
+                                    msg: false
+                                })
+                            } else {
+                                res.render('search', {
+                                    title: "Search",
+                                    users: false,
+                                    search: user,
+                                    msg: "No results found !"
+                                })
+                            }
+                        })
+
                     })
     
                 })

@@ -17,26 +17,38 @@ const randomSearch = (req, res, next)=> {
                         list.push(id.friendID)
                     });
                 }
-                
-                connection.query('select username, bio, UID from users where UID not in(?) order by rand() limit 11;', [list], (error, results)=> {
-                     
-                    if(results.length != 0) {
-                        res.render('search', {
-                            title: "Search",
-                            users: results,
-                            search: false,
-                            msg: false
-                        })
-                    } else {
-                        res.render('search', {
-                            title: "Search",
-                            users: false,
-                            search: false,
-                            msg: "No results found !"
-                        })
+
+                connection.query('select rqstID from friendrequests where senderID = (?)', UID[0].UID, (error, result)=> {
+
+                    if(result.length !=0){
+                        result.forEach(id => {
+                            list.push(id.rqstID)
+                        });
                     }
+
+
+                    connection.query('select username, bio, UID from users where UID not in(?) order by rand() limit 11;', [list], (error, results)=> {
+                         
+                        if(results.length != 0) {
+                            res.render('search', {
+                                title: "Search",
+                                users: results,
+                                search: false,
+                                msg: false
+                            })
+                        } else {
+                            res.render('search', {
+                                title: "Search",
+                                users: false,
+                                search: false,
+                                msg: "No results found !"
+                            })
+                        }
+                        
+                    });
                     
-                });
+                })
+                
 
             })
 
