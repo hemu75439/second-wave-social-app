@@ -118,7 +118,9 @@ function selectChat(selected) {
 function addNoti(toUser) {
   document.querySelectorAll('#chat-frnd option').forEach(user => {
     if(user.value == toUser) {
-      user.innerText = user.innerText + "  + M"
+      if(user.innerText[user.innerText.length-1] !== "M") {
+        user.innerText = user.innerText + "  + M"
+      }
     }
   })
 }
