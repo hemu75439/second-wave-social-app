@@ -7,6 +7,10 @@
     <title>Second Wave | <%= title %></title>
     <link rel="stylesheet" href="/style.css">
     <script src="/script.js" defer></script>
+    <% if(title == "Chat") { %> 
+        <script src="/socket.js" defer></script>
+        <script src="/socket.io/socket.io.js"></script>
+    <% } %>
 </head>
 <body>
     
@@ -16,6 +20,7 @@
         <% if(title == "Home" || title == "What's up ?") { %> posts-window <% } %>
         <% if(title == "Search") { %> search-window <% } %>
         <% if(title == "Friend Requests" || title == "Friend List") { %> req-frnds-window <% } %>
+        <% if(title == "Chat") { %> chats-window <% } %>
         <% if(title == "Settings" || title == "Edit Profile" || title == "Change Password" || title == "Logout" || title == "Delete Account") { %> settings-window <% } %>
     ">
         

@@ -10,7 +10,7 @@
 <body>
     
 
-    <main class="posts-window"> <!-- Write it such that it changes according to the title -->
+    <main class="chats-window"> <!-- Write it such that it changes according to the title -->
         <nav>
             <ul>
                 <li><a href="#">
@@ -39,17 +39,37 @@
             </ul>
         </nav>
         
-        <div class="theme-box post">
-            <h2>Username</h2>
-            <span>10:45</span>
-            <p>Hey Everyone, this is a random post.
-                And I don't know what I'm writing...
-            </p>
-            <span><span>20</span> Likes</span>
-            <img  id="likeBtn" src="../public/src/Heart.svg" alt="like" onclick="like('postId')"> // Post Id to be kept here in parameter 
+        <div class="chat">
+            <div class="chat-info">
+                <select id="chat-frnds" placeholder="Online Friends">
+                    <option>Online Friends</option>
+                    <option value="@username">@username</option>
+                    <option value="@username">@username</option>
+                    <option value="@username">@username</option>
+                </select>
+            </div>
+            <div class="chat-area">
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+                <div class="chat-msg rec">Message..!..😁😁</div>
+                <div class="chat-msg sent">Message..!..😁😁</div>
+            </div>
+            <div class="send-area">
+                <input type="text" placeholder="Message...">
+                <button><img src="../public/src/Send - Icon.svg" alt="Send"></button>
+            </div>
         </div>
-
-        
     </main>
 
 

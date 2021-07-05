@@ -1,7 +1,35 @@
 <%- include('./partials/nav') %>
 
-<div style="position: fixed; height: 100%; width: 100%; background-color: var(--background);">
+<div class="chat">
+    <div class="chat-info" data-user="<%= user %>">
+        <select id="chat-frnd" placeholder="Online Friends" onchange="selectChat(this)">
+            <option value="basic">Online Friends</option>
+            <% if(frnds) { %>
+                
+                <% frnds.forEach(frnd => { %>
+                    
+                    <option value="<%= frnd.username %>"> <%= frnd.username %> </option>
+                    
+                <% }) %>
+            
+            <% } %>
+        </select>
+    </div>
+    <div class="chat-area" id="basic-chat">
+        <div class="chat-msg rec">You'll be online only while this window is open..!..🤩</div>
+        <div class="chat-msg rec">The above drop down shows online friends..😏</div>
+        <div class="chat-msg rec">Go on just select the friend you wanna talk with and chat..😎</div>
+        <div class="chat-msg rec">"+M" after the name of friend means NEW MESSAGE</div>
+    </div>
+    <% if(frnds) { %>
+                
+        <% frnds.forEach(frnd => { %> 
+            <div class="chat-area" id="<%= frnd.username.slice(1) %>" style="display: none;"></div>  
+        <% }) %>
     
-    <div style="position: absolute; left: 40%; top: 40%; color: var(--foreground);">Currently unavailable</div>
-    
+    <% } %>
+    <form class="send-area">
+        <input type="text" name="msg" placeholder="Message...">
+        <button type="submit"><img src="/src/Send - Icon.svg" alt="Send"></button>
+    </form>
 </div>

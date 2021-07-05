@@ -5,7 +5,9 @@ require('dotenv').config()
 const ejsLayouts = require('express-ejs-layouts')
 const {session, sessionStore} = require('./config/session')
 const auth = require('./config/auth')
-
+const httpServer = require('http').createServer(app);
+const { socketSetup } = require('./socket')
+socketSetup(httpServer)
 
 app.use(express.static('public'))
 
@@ -69,6 +71,6 @@ app.get('/logout', auth, (req, res)=> {
 const deleteAccount = require('./model/deleteAccount')
 app.get('/deleteaccount', auth, deleteAccount)
 
-app.listen(port, ()=> {
+httpServer.listen(port, ()=> {
     console.log('listening on port : ' + port)
 })
